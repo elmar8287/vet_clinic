@@ -51,3 +51,30 @@ SELECT MIN(weight_kg) FROM animals WHERE species='pokemon';
 SELECT MAX(weight_kg) FROM animals WHERE species='pokemon';
 SELECT AVG(escape_attempts) FROM animals WHERE (species='digimon') AND(date_of_birth BETWEEN '1990.01.01' AND '2000.12.31');
 SELECT AVG(escape_attempts) FROM animals WHERE (species='pokemon') AND(date_of_birth BETWEEN '1990.01.01' AND '2000.12.31');
+
+SELECT animal_name FROM animals
+JOIN owners ON animals.owners_id = owners.owners_id
+WHERE owners.full_name = 'Melody Pond';
+
+SELECT animal_name FROM animals
+JOIN species ON animals.species_id = species.species_id
+WHERE species.species_name = 'Pokemon';
+
+SELECT owners.full_name, animals.animal_name FROM animals
+LEFT JOIN owners ON animals.owners_id = owners.owners_id;
+WHERE animals.owners_id IS NOT NULL AND (animals.owners_id IS NULL);
+
+SELECT species.species_name, COUNT(animals.animal_name) FROM animals
+JOIN species ON animals.species_id = species.species_id
+GROUP BY species.species_name;
+
+SELECT animals.animal_name FROM animals
+JOIN species ON animals.species_id = species.species_id
+WHERE species.species_name = 'Digimon' AND animals.owners_id = 2;
+
+SELECT animal_name FROM animals
+WHERE owners_id = 5 AND escape_attempts = 0;
+
+SELECT owners.full_name, COUNT(animals.animal_name) FROM animals
+JOIN owners ON animals.owners_id = owners.owner_id
+GROUP BY owners.owner_name;
