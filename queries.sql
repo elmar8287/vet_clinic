@@ -76,5 +76,44 @@ SELECT animal_name FROM animals
 WHERE owners_id = 5 AND escape_attempts = 0;
 
 SELECT owners.full_name, COUNT(animals.animal_name) FROM animals
-JOIN owners ON animals.owners_id = owners.owner_id
-GROUP BY owners.owner_name;
+JOIN owners ON animals.owners_id = owners.owners_id
+GROUP BY owners.full_name;
+
+SELECT visits.vets_id, visits.animals_id, MAX(visits.visit_date) FROM visits
+WHERE  visits.vets_id = 1
+GROUP BY visits.vets_id, visits.animals_id;
+
+SELECT DISTINCT visits.vets_id, visits.animals_id FROM visits
+WHERE  visits.vets_id = 3
+GROUP BY visits.vets_id, visits.animals_id;
+
+SELECT * FROM specializations
+
+SELECT visits.vets_id, visits.animals_id FROM visits
+WHERE  visits.vets_id = 3 AND (visits.visit_date BETWEEN '2020.04.01' AND '2020.08.30')
+GROUP BY visits.vets_id, visits.animals_id;
+
+SELECT visits.animals_id, COUNT(visits.vets_id) total_visits FROM visits
+GROUP BY visits.animals_id;
+
+SELECT visits.vets_id, visits.animals_id, MIN(visits.visit_date) FROM visits
+WHERE  visits.vets_id = 2
+GROUP BY visits.vets_id, visits.animals_id;
+
+SELECT animals.animal_name animals, vets.vets_name vets, visit_date FROM visits
+JOIN animals ON visits.animals_id = animals.id
+JOIN vets ON visits.vets_id = vets.vets_id
+GROUP BY animals, vets, visit_date;
+
+SELECT species.species_name, COUNT(visits.animals_id) FROM visits
+JOIN animals ON visits.animals_id = animals.id
+JOIN species ON animals.species_id = species.species_id
+JOIN vets ON visits.vets_id = vets.vets_id
+WHERE vets.vets_name = 'Maisy Smith'
+GROUP BY species.species_name;
+
+SELECT vets.vets_name, COUNT(visits.animals_id) FROM visits
+JOIN vets ON visits.vets_id = vets.vets_id
+JOIN animals ON visits.animals_id = animals.id
+JOIN species ON animals.species_id = species.species_id
+GROUP BY vets.vets_name;
