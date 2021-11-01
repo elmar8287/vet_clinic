@@ -6,8 +6,8 @@
 
 - Create animals table. 
 - Query and update animals table.  ​
-- Query multiple tables. 
-- Add "join table" for visits. 🚩​🚩​🚩 (current milestone)
+- Query multiple tables. 🚩​🚩​🚩 (current milestone)
+- Add "join table" for visits. 
 - Database performance audit.
 - Add database schema diagram.
 
