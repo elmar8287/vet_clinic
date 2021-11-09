@@ -11,7 +11,7 @@
 - Database performance audit. 
 - Add database schema diagram.  <<<< current milestone
 
-![Diagram view](./diagram.PNG)
+![Diagram view](./img/diagram.PNG)
 ## Built using:
 
 - SQL
