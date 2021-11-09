@@ -9,7 +9,7 @@
 - Query multiple tables.
 - Add "join table" for visits. 
 - Database performance audit. 
-- Add database schema diagram.  <<<< current milestone
+- Add database schema diagram.
 
 ![Diagram view](./img/diagram.PNG)
 ## Built using:
