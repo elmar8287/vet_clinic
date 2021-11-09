@@ -22,3 +22,6 @@ CREATE TABLE species (
   species_id BIGSERIAL PRIMARY KEY,
   species_name VARCHAR(150)
 );
+
+CREATE INDEX ON visits (animals_id);
+CREATE INDEX ON visits (vets_id);
