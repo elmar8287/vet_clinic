@@ -8,9 +8,10 @@
 - Query and update animals table. 
 - Query multiple tables.
 - Add "join table" for visits. 
-- Database performance audit. <<<< current milestone
-- Add database schema diagram.
+- Database performance audit. 
+- Add database schema diagram.  <<<< current milestone
 
+![Diagram view](./diagram.PNG)
 ## Built using:
 
 - SQL

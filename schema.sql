@@ -23,5 +23,29 @@ CREATE TABLE species (
   species_name VARCHAR(150)
 );
 
+CREATE TABLE vets (
+  vets_id BIGSERIAL PRIMARY KEY,
+  vets_name VARCHAR(150),
+  age INT,
+  date_of_graduation DATE
+);
+
+CREATE TABLE specializations (
+  specializations_id BIGSERIAL PRIMARY KEY,
+  species_id INT,
+  vets_id INT,
+  FOREIGN KEY(species_id) REFERENCES species(species_id),
+  FOREIGN KEY(vets_id) REFERENCES vets(vets_id)
+);
+
+CREATE TABLE visits (
+  visits_id BIGSERIAL PRIMARY KEY,
+  animals_id INT,
+  vets_id INT,
+  visit_date DATE,
+  FOREIGN KEY(animals_id) REFERENCES animals(id),
+  FOREIGN KEY(vets_id) REFERENCES vets(vets_id)
+);
+
 CREATE INDEX ON visits (animals_id);
 CREATE INDEX ON visits (vets_id);
