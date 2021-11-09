@@ -127,3 +127,11 @@ INSERT INTO visits (animals_id, vets_id, visit_date)
 VALUES (10, 3, '2020.05.24');
 INSERT INTO visits (animals_id, vets_id, visit_date) 
 VALUES (10, 3, '2021.01.11');
+
+INSERT INTO visits (animals_id, vets_id, visit_date) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT vets_id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+INSERT INTO owners (full_name, email) SELECT 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
+DELETE FROM visits where animals_id = 4 and vets_id = 2;
+
+INSERT INTO visits (animals_id, vets_id, visit_date) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT vets_id FROM vets) vets_ids, generate_series('2020-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+INSERT INTO owners (full_name, email) SELECT 'Owner ' || generate_series(1,1500000), 'owner_' || generate_series(1,1500000) || '@mail.com';
